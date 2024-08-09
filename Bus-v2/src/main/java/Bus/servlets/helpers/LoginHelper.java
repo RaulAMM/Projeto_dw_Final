@@ -10,7 +10,7 @@ import Bus.model.daos.UserDao;
 import Bus.model.entities.User;
 import Bus.utils.SearcherDataSource;
 
-public class LoginHelper {
+public class LoginHelper implements Helper{
 	
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		String email = req.getParameter("email");

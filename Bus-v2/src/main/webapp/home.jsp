@@ -37,7 +37,7 @@
 						</div>
 					</div>
 					<div class="col-12 col-lg-3 mt-4">
-						<button type="submit" class="btn btn-primary" name="action" value="searchActivities">Filtrar</button>
+						<button type="submit" class="btn btn-primary" name="action" value="searchCards">Filtrar</button>
 					</div>  
 				</div>
 			</form>
@@ -75,7 +75,7 @@
 									</span>
 									
                 					<span data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir">
-                						<a type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal" data-bs-id="${activity.id}">
+                						<a type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal" data-bs-id="${card.id}">
 	                						<img src="img/trash.svg" alt="Excluir">
 	                					</a>
                 					</span>
