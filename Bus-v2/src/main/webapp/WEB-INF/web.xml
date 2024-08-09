@@ -28,26 +28,22 @@
   </context-param>
   <context-param>
     <param-name>searchCards</param-name>
-    <param-value>Bus.helpers.SearchACardHelper</param-value>
+    <param-value>Bus.helpers.SearchCardHelper</param-value>
   </context-param>
   <context-param>
     <param-name>saveCard</param-name>
-    <param-value>Bus.helpers.SaveActivityHelper</param-value>
+    <param-value>Bus.helpers.SaveCardHelper</param-value>
   </context-param>
   <context-param>
     <param-name>updateCard</param-name>
-    <param-value>Bus.helpers.UpdateActivityHelper</param-value>
+    <param-value>Bus.helpers.UpdateCardHelper</param-value>
   </context-param>
   <context-param>
     <param-name>deleteCard</param-name>
-    <param-value>Bus.servlets.helpers.DeleteActivityHelper</param-value>
+    <param-value>Bus.servlets.helpers.DeleteCardHelper</param-value>
   </context-param>
   <context-param>
     <param-name>CardStatisticsByType</param-name>
-    <param-value>Bus.servlets.helpers.ActivityStatisticsByTypeHelper</param-value>
-  </context-param>
-  <context-param>
-    <param-name>CardStatisticsByDay</param-name>
-    <param-value>Bus.servlets.helpers.ActivityStatisticsByDayHelper</param-value>
+    <param-value>Bus.servlets.helpers.CardStatisticsByTypeHelper</param-value>
   </context-param>
 </web-app>
