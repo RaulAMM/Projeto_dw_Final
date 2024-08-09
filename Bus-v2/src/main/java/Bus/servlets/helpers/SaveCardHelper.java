@@ -18,9 +18,9 @@ public class SaveCardHelper implements Helper{
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		Long id = Long.parseLong(req.getParameter("IdCartao"));
 		CardType type = CardType.valueOf(req.getParameter("Tipo"));
-		Boolean status = Boolean.parse(req.getParameter("Status"));
+		Boolean status = Boolean.parseBoolean(req.getParameter("Status"));
 		Double saldo = Double.parseDouble(req.getParameter("Saldo"));
-		String nomeTitular = String.parseString(req.getParameter("NomeTitular"));
+		String nomeTitular = req.getParameter("NomeTitular");
 
 		HttpSession session = req.getSession(false);
 		User user = (User)session.getAttribute("user");
