@@ -16,7 +16,7 @@ public class SearcherDataSource {
 		try {
 			Context context = new InitialContext();
 			context = (Context)context.lookup("java:comp/env");
-			dataSource = (DataSource)context.lookup("jdbc/StackOverBus");
+			dataSource = (DataSource)context.lookup("jdbc/StackOverbus");
 		}catch (NamingException e) {
 			throw new RuntimeException("Erro durante o lookup", e);
 		}

@@ -13,7 +13,7 @@ import Bus.model.entities.User;
 import Bus.utils.PasswordEncode;
 
 public class UserDao {
-	private DataSource dataSource;
+	private DataSource dataSource;	
 
 	public UserDao(DataSource dataSource) {
 		super();
@@ -23,7 +23,7 @@ public class UserDao {
 	public Optional<User> getUserByEmailAndPassword(String email, String password) {
 		String passwordEncripted = PasswordEncode.encode(password);
 
-		String sql = "select CPF,name,email from user where Email=? and Senha=?";
+		String sql = "select CPF, RG, Nome, Email from Usuario where Email=? and Senha=?";
 		Optional<User> optional = Optional.empty();
 		try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
 			ps.setString(1, email);
@@ -31,8 +31,8 @@ public class UserDao {
 			try (ResultSet rs = ps.executeQuery()) {
 				if (rs.next()) {
 					User user = new User();
-					user.setCPF(rs.getLong(1));
-					user.setRG(rs.getLong(2));
+					user.setCPF(rs.getString(1));
+					user.setRG(rs.getString(2));
 					user.setName(rs.getString(3));
 					user.setEmail(rs.getString(4));
 					optional = Optional.of(user);
@@ -45,7 +45,7 @@ public class UserDao {
 	}
 	
 	public Optional<User> getUserByEmail(String email){
-		String sql = "select CPF,name,email from user where email=?";
+		String sql = "select CPF, RG, Nome, Email from Usuario where email=?";
 		Optional<User> optional = Optional.empty();
 		try(Connection conn = dataSource.getConnection(); 
 				PreparedStatement ps = conn.prepareStatement(sql)){
@@ -53,8 +53,8 @@ public class UserDao {
 			try(ResultSet rs = ps.executeQuery()) {
 				if(rs.next()) {
 					User user = new User();
-					user.setCPF(rs.getLong(1));
-					user.setRG(rs.getLong(2));
+					user.setCPF(rs.getString(1));
+					user.setRG(rs.getString(2));
 					user.setName(rs.getString(3));
 					user.setEmail(rs.getString(4));
 					optional = Optional.of(user);
@@ -71,15 +71,15 @@ public class UserDao {
 		if(optional.isPresent()) {
 			return false;
 		}
-		String sql = "insert into user (name, email, password, "
-				+ "date_of_birth, gender, active) values (?,?,?,?,?,?)";
+		String sql = "insert into Usuario (CPF, RG, Nome, Email, DataNascimento, Senha) values (?,?,?,?,?,?)";
 		try(Connection conn = dataSource.getConnection(); 
 				PreparedStatement ps = conn.prepareStatement(sql)){
-			ps.setString(1, user.getName());
-			ps.setString(2, user.getEmail());
-			ps.setString(3, user.getPassword());
-			ps.setDate(4, Date.valueOf(user.getDateOfBirth()));
-			ps.setBoolean(4, true);
+			ps.setString(1, user.getCPF());
+			ps.setString(2, user.getRG());
+			ps.setString(3, user.getName());
+			ps.setString(4, user.getEmail());
+			ps.setDate(5, Date.valueOf(user.getDateOfBirth()));
+			ps.setString(6, user.getPassword());
 			ps.executeUpdate();
 		}catch (SQLException e) {
 			throw new RuntimeException("Erro durante a consulta", e);

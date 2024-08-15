@@ -22,7 +22,7 @@ public class LoginHelper implements Helper{
 			HttpSession session = req.getSession();
 			session.setMaxInactiveInterval(600);
 			session.setAttribute("user", user);
-			return "/ControllerServlet?action=listActivities";
+			return "/home.jsp";
 		}else {
 			req.setAttribute("result", "loginError");
 			return "/login.jsp";

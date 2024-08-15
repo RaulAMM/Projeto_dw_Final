@@ -11,8 +11,8 @@ import Bus.utils.SearcherDataSource;
 public class AddUserHelper implements Helper{
 	
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-		Long CPF = req.getDateHeader("CPF");
-		Long RG = req.getDateHeader("RG");
+		String CPF = req.getParameter("CPF");
+		String RG = req.getParameter("RG");
 		String name = req.getParameter("Nome");
 		String email = req.getParameter("Email");
 		String password = req.getParameter("Senha");

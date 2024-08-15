@@ -1,5 +1,6 @@
 package Bus.model.daos;
 
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,14 +26,14 @@ public class CardDao {
 		}
 
 		public Boolean save(Card card) {
-			String sql = "insert into Cartão (Tipo, IdCartao, Status, Saldo, NomeTitular, UsuarioCPF) values(?,?,?,?,?,?)";
+			String sql = "insert into Cartão (IdCartao, StatusCartao, Saldo, Tipo, NomeTitular, Usuario_CPF) values(?,?,?,?,?,?)";
 			try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
-				ps.setString(1, card.getType().toString());
-				ps.setLong(2, card.getId());
-				ps.setBoolean(3, card.isStatus());
-				ps.setDouble(4, card.getSaldo());
+				ps.setLong(1, card.getId());
+				ps.setBoolean(2, card.isStatus());
+				ps.setDouble(3, card.getSaldo());
+				ps.setString(4, card.getType().toString());
 				ps.setString(5, card.getNomeTitular());
-				ps.setLong(6, card.getUserCPF().getCPF());
+				ps.setString(6, card.getUserCPF().getCPF());
 				ps.executeUpdate();
 				return true;
 			} catch (SQLException sqlException) {
@@ -41,17 +42,17 @@ public class CardDao {
 		}
 
 		public List<Card> getCardByUser(User user) {
-			String sql = "select * from Cartão where CPF=?";
+			String sql = "select * from Cartão where UsuarioCPF=?";
 			List<Card> cards = new ArrayList<>();
 			try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
-				ps.setLong(1, user.getCPF());
+				ps.setString(1, user.getCPF());
 				try (ResultSet rs = ps.executeQuery()) {
 					while (rs.next()) {
 						Card card = new Card();
 						card.setId(rs.getLong(1));
-						card.setType(CardType.valueOf(rs.getString(2)));
-						card.setStatus(rs.getBoolean(3));
-						card.setSaldo(rs.getDouble(4));
+						card.setStatus(rs.getBoolean(2));
+						card.setSaldo(rs.getDouble(3));
+						card.setType(CardType.valueOf(rs.getString(4)));
 						card.setNomeTitular(rs.getString(5));
 						card.setUserCPF(user);
 						cards.add(card);
@@ -64,7 +65,7 @@ public class CardDao {
 		}
 
 		public Card getCardById(Long id) {
-			String sql = "select * from Cartão where id=?";
+			String sql = "select * from Cartão where IdCartao=?";
 			Card card = null;
 			try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
 				ps.setLong(1, id);
@@ -72,12 +73,12 @@ public class CardDao {
 					if (rs.next()) {
 						card = new Card();
 						card.setId(rs.getLong(1));
-						card.setType(CardType.valueOf(rs.getString(2)));
-						card.setStatus(rs.getBoolean(3));
-						card.setSaldo(rs.getDouble(4));
+						card.setStatus(rs.getBoolean(2));
+						card.setSaldo(rs.getDouble(3));
+						card.setType(CardType.valueOf(rs.getString(4)));
 						card.setNomeTitular(rs.getString(5));
 						User user = new User();
-						user.setCPF(rs.getLong(6));
+						user.setCPF(rs.getString(6));
 						card.setUserCPF(user);
 					}
 				}
@@ -88,15 +89,15 @@ public class CardDao {
 		}
 
 		public Boolean update(Card card) {
-			String sql = "update Cartão set " + "IdCartao=?," + "Status=?," + "Saldo=?," + "NomeTitular=?," + "UsuarioCPF=?,"
-					+ "user_id=?" + " where id=?";
+			String sql = "update Cartão set " + "IdCartao=?," + "Status=?," + "Saldo=?,"+ "Tipo=?" + "NomeTitular=?," + "UsuarioCPF=?,"
+		+ " where IdCartao=?";
 			try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
 				ps.setLong(1, card.getId());
-				ps.setString(2, card.getType().toString());
-				ps.setBoolean(3, card.isStatus());
-				ps.setDouble(4, card.getSaldo());
+				ps.setBoolean(2, card.isStatus());
+				ps.setDouble(3, card.getSaldo());
+				ps.setString(4, card.getType().toString());
 				ps.setString(5, card.getNomeTitular());
-				ps.setLong(6, card.getUserCPF().getCPF());
+				ps.setString(6, card.getUserCPF().getCPF());
 				ps.executeUpdate();
 				return true;
 			} catch (SQLException sqlException) {
@@ -105,7 +106,7 @@ public class CardDao {
 		}
 
 		public Boolean delete(Card card) {
-			String sql = "delete from Cartão where id=?";
+			String sql = "delete from Cartão where IdCartao=?";
 			try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
 				ps.setLong(1, card.getId());
 				ps.executeUpdate();
@@ -117,7 +118,7 @@ public class CardDao {
 
 		public List<Card> getCardByFilter(CardFilter filter) throws SQLException {
 			StringBuilder sql = 
-					new StringBuilder("select * from Cartão where user_id=?");
+					new StringBuilder("select * from Cartão where UsuarioCPF=?");
 			List<Object> params = new ArrayList<>();
 			params.add(filter.getUser().getCPF());
 
@@ -150,10 +151,10 @@ public class CardDao {
 		}
 		
 		public List<CardByType> getCardStatisticsByType(User user) {
-			String sql = "select type from card where user_id=? group by type";
+			String sql = "select Tipo from Cartão where UsuarioCPF=? group by Tipo";
 			List<CardByType> cards = new ArrayList<>();
 			try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
-				ps.setLong(1, user.getCPF());
+				ps.setString(1, user.getCPF());
 				try (ResultSet rs = ps.executeQuery()) {
 					while (rs.next()) {
 						CardByType card = new CardByType();

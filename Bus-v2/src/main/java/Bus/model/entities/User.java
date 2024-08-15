@@ -4,8 +4,8 @@ import java.time.LocalDate;
 
 public class User {
 
-	private Long CPF;
-	private Long RG;
+	private String CPF;
+	private String RG;
 	private String name;
 	private String email;
 	private String password;
@@ -16,16 +16,18 @@ public class User {
 	public String getName() {
 		return name;
 	}
-	public Long getCPF() {
+	
+	public String getCPF() {
 		return CPF;
 	}
-	public void setCPF(Long cPF) {
+	
+	public void setCPF(String cPF) {
 		CPF = cPF;
 	}
-	public Long getRG() {
+	public String getRG() {
 		return RG;
 	}
-	public void setRG(Long rG) {
+	public void setRG(String rG) {
 		RG = rG;
 	}
 	public void setName(String name) {
