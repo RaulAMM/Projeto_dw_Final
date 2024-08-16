@@ -10,7 +10,7 @@ function loadData(){
 }
 
 function getCardStatisticsByType(){
-	const url = "ControllerServlet?action=activityStatisticsByType";
+	const url = "ControllerServlet?action=CardStatisticsByType";
 
 	// Solicitação GET.
 	fetch(url)

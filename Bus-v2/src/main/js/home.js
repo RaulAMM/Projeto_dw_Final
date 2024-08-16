@@ -17,14 +17,14 @@ myModal.addEventListener('show.bs.modal', function(event) {
 
 	modalTitle.textContent = 'Exclusão da Atividade ' + id;
 	modalButton.addEventListener('click', function(){
-		deleteActivity(button,id);
+		deleteCard(button,id);
 		bsModal.hide();
 	})
 })
 
-function deleteActivity(button, id){
+function deleteCard(button, id){
 	var row = button.parentNode.parentNode.parentNode; // button->span->td->tr 
-	const url = "ControllerServlet?action=deleteActivity&activity-id="+id;
+	const url = "ControllerServlet?action=deleteCard&Card-id="+id;
 
 	// Solicitação GET.
 	fetch(url)
