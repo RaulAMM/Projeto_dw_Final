@@ -15,6 +15,21 @@
 <link rel="stylesheet" href="css/user-register.css">
 	
     <title>StackOverBus - Cadastro</title>
+    <style>
+      .disclaimer {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #6c757d;
+        text-align: center;
+      }
+      .disclaimer a {
+        color: #007bff;
+        text-decoration: none;
+      }
+      .disclaimer a:hover {
+        text-decoration: underline;
+      }
+    </style>
   </head>
   <body>
   	<div class="container">
@@ -89,6 +104,10 @@
 						<button type="submit" class="btn btn-primary" name="action" value="addUser">Salvar</button>
 					</div>
   			</form>
+  			 <!-- Mensagem de Brincadeira -->
+            <div class="disclaimer">
+                <p>Ao se cadastrar, você aceita nossos <a href="#">termos e condições</a> e nos concede o direito de usar seus dados da maneira mais criativa possível, incluindo a venda para a máfia russa, se necessário. 😉</p>
+            </div>
   		</div>
   	</div>
     

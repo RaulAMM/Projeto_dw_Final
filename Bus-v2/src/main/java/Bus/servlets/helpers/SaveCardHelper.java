@@ -16,10 +16,12 @@ public class SaveCardHelper implements Helper{
 	
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		Double saldo = 0.0;
+		
 		Long id = Long.parseLong(req.getParameter("IdCartao"));
 		CardType type = CardType.valueOf(req.getParameter("Tipo"));
-		Boolean status = Boolean.parseBoolean(req.getParameter("Status"));
-		Double saldo = Double.parseDouble(req.getParameter("Saldo"));
+		Boolean status = true;
+		saldo = Double.parseDouble(req.getParameter("Saldo"));
 		String nomeTitular = req.getParameter("NomeTitular");
 
 		HttpSession session = req.getSession(false);

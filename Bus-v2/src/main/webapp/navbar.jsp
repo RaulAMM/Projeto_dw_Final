@@ -1,5 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container-fluid">
+	<a class="navbar-brand" href="#">
+      <img src="Logo1.png" alt="Logo" style="height: 40px;">
+    </a>
 		<a class="navbar-brand" href="ControllerServlet?action=listCards">Bus</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarSupportedContent"
@@ -10,7 +13,7 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				<li class="nav-item"><a class="nav-link"
-					href="user-register.jsp">Card</a></li>
+					href="card-register.jsp">Card</a></li>
 				<li class="nav-item"><a class="nav-link" href="statistics.jsp">Estatísticas</a>
 				</li>
 				<li class="nav-item dropdown"><a
@@ -23,6 +26,8 @@
 						<li><a class="dropdown-item"
 							href="ControllerServlet?action=logout">Sair</a></li>
 					</ul></li>
+				<li class="nav-item"><a class="nav-link"
+					href="noticias.jsp">Notícias</a></li>
 			</ul>
 		</div>
 	</div>

@@ -14,6 +14,12 @@
 <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
+  <!-- Banner de Notícias -->
+  <div class="news-banner">
+    <div class="container">
+      <span>🚀 Novidades: Novo recurso de segurança adicionado! <a href="#">Saiba mais</a></span>
+    </div>
+  </div>
 	<div class="container">
 		<div class="col-lg-4 offset-lg-4 col-sm-12">
 			<c:choose>
@@ -69,7 +75,34 @@
 			</form>
 
 		</div>
+		
+		<!-- Banner Informativo da Empresa -->
+<!-- Banner Informativo da Empresa -->
+<div class="info-banner">
+    <div class="container">
+    <!-- Imagem do Banner -->
+        <div class="banner-image">
+            <img src="Logo1.png" alt="Logo da StackOverBus">
+        </div>
+        <h2>Sobre a StackOverBus</h2>
+        <p>
+            A StackOverBus surgiu do sonho de quatro rapazes inovadores: Matheus, Rafael, Raul e Pietro. Com o objetivo de passar no DSI1 () e melhorar suas existências, eles fundaram a StackOverBus para criar uma plataforma que tem como unica e principal função, te ajudar com os terriveis cartões de onibus.
+        </p>
+        <p>
+            Com dedicação e criatividade, a StackOverBus se empenha em fornecer recursos e ferramentas de última geração, apoiando o crescimento e desenvolvimento profissional de seus usuários.
+        </p>
+        <a href="about-us.jsp" class="btn btn-info">Saiba Mais</a>
+    </div>
+</div>
 	</div>
+	
+	<!-- Rodapé -->
+  <footer class="footer">
+    <div class="container">
+      <span>&copy; 2024 StackOverBus. Todos os direitos reservados.</span>
+    </div>
+  </footer>
+  
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

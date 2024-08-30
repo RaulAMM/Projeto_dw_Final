@@ -14,6 +14,7 @@
 	rel="stylesheet">
 <link rel="stylesheet" href="css/home.css">
 <title>StackOverBus - Página principal</title>
+ 
 </head>
 <body>
 	<jsp:include page="navbar.jsp" />

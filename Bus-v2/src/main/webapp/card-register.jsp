@@ -35,26 +35,53 @@
 			</c:if>
 				
 			<form action="ControllerServlet" method="post" id="form1">
-					<c:choose>
-						<c:when test="${Card == null}">
-							<h1 class="text-center">Novo Cartão</h1>
-						</c:when>
-						<c:when test="${Card != null}">
-							<h1 class="text-center">Edição de Cartão</h1>
-						</c:when>
-					</c:choose>
-					<c:choose>
-						<c:when test="${Card == null}">
-							<input type="hidden" name="id" value="0">
-						</c:when>
-						<c:when test="${Card != null}">
-							<input type="hidden" name="id" value="${Card.id}">
-						</c:when>
-					</c:choose>
+				
+				<c:choose>
+					<c:when test="${Card == null}">
+						<h1 class="text-center">Novo Cartão</h1>
+					</c:when>
+					<c:when test="${Card != null}">
+						<h1 class="text-center">Edição de Cartão</h1>
+					</c:when>
+				</c:choose>
+				<c:choose>
+					<c:when test="${Card == null}">
+						<input type="hidden" name="id" value="0">
+					</c:when>
+					<c:when test="${Card != null}">
+						<input type="hidden" name="id" value="${Card.id}">
+					</c:when>
+				</c:choose>
+					
+					<div class="mb-2">
+					  <label for="NomeTitular">Nome Titular*</label>
+					  <input type="text" class="form-control"  
+					  	name="NomeTitular" id="NomeTitular" minlength="3" maxlength="50"
+					  	required="required">
+					  <span id="0"></span>
+					</div>
+					
+					<div class="mb-2">
+					  <label for="IdCartao">Nº do Cartão*</label>
+					  <input type="text" class="form-control"  
+					  	name="IdCartao" id="IdCartao"
+					  	maxlength="19"
+					  	required="required">
+					  <span id="1"></span>
+					</div>
+					
+					<div class="mb-2">
+					  <label for="Saldo">Saldo</label>
+					  <input type="number" class="form-control"  
+					  	name="Saldo" id="Saldo"
+					  	maxlength="12">
+					  <span id="2"></span>
+					</div>
+					
 					<div class="mb-2">
 						<label for="type">Tipo*</label> 
 						<select class="form-select"
-							name="type" id="type" required="required">
+							name="Tipo" id="Tipo" required="required">
 							<c:choose>
 								<c:when test="${Card == null}">
 									<option value="" selected>Selecione</option>
@@ -96,5 +123,6 @@
 	</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="js/card.js"></script>
 </body>
 </html>
