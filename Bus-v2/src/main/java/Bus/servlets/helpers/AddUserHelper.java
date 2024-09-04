@@ -1,5 +1,6 @@
 package Bus.servlets.helpers;
 
+import java.time.LocalDate;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Bus.model.daos.UserDao;
@@ -15,6 +16,7 @@ public class AddUserHelper implements Helper{
 		String name = req.getParameter("Nome");
 		String email = req.getParameter("Email");
 		String password = req.getParameter("Senha");
+		String dateOfBirth = req.getParameter("dateOfBirth");
 				
 		User user = new User();
 		user.setCPF(CPF);
@@ -22,6 +24,7 @@ public class AddUserHelper implements Helper{
 		user.setName(name);
 		user.setEmail(email);
 		user.setPassword(PasswordEncode.encode(password));
+		user.setDateOfBirth(LocalDate.parse(dateOfBirth));
 		
 		UserDao userDao = new UserDao(SearcherDataSource.getInstance().getDataSource());
 		
