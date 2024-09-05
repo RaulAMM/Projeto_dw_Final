@@ -1,7 +1,5 @@
 package Bus.servlets.helpers;
 
-import java.time.LocalDate;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,9 +16,8 @@ public class SaveCardHelper implements Helper{
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		Double saldo = 0.0;
 		
-		Long id = Long.parseLong(req.getParameter("IdCartao"));
+		String id =req.getParameter("IdCartao");
 		CardType type = CardType.valueOf(req.getParameter("type"));
-		Boolean status = true;
 		saldo = Double.parseDouble(req.getParameter("Saldo"));
 		String nomeTitular = req.getParameter("NomeTitular");
 
@@ -29,16 +26,18 @@ public class SaveCardHelper implements Helper{
 		CardDao cardDao = new CardDao(SearcherDataSource.getInstance().getDataSource());
 		Card card = new Card();
 		card.setType(type);
-		card.setStatus(status);
 		card.setSaldo(saldo);
 		card.setNomeTitular(nomeTitular);
-		card.setUserCPF(user);
-		if(id == 0) {
+		card.setUserCPF(user.getCPF());
+		System.out.println(card.isStatus());
+		if(!card.isStatus()) {
 			if(cardDao.save(card)) {
+				card.setStatus(true);
 				req.setAttribute("result", "registered");
 			}
 		}else {
 			card.setId(id);
+			System.out.println(card.isStatus());
 			if(cardDao.update(card)) {
 				req.setAttribute("result", "registered");
 			}

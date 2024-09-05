@@ -2,7 +2,7 @@ package Bus.model.entities;
 
 public enum CardType {
 	Escolar("Escolar"),
-	Padrão("Padrão"),
+	Padrao("Padrao"),
 	Empresarial("Empresarial");
 	
 	private String type;

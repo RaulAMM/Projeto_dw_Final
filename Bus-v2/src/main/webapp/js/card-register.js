@@ -37,6 +37,7 @@ function validateCardNumber(form) {
 function mcc(v) {
 	v = v.replace(/\D/g, ""); // Permite apenas dígitos
 	v = v.replace(/(\d{4})/g, "$1."); // Coloca um ponto a cada 4 caracteres
+	v = v.substring(0, 19)
 
 	return v;
 }

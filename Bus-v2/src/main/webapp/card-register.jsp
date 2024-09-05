@@ -37,19 +37,19 @@
 			<form action="ControllerServlet" method="post" id="form1">
 				
 				<c:choose>
-					<c:when test="${Card == null}">
+					<c:when test="${card == null}">
 						<h1 class="text-center">Novo Cartão</h1>
 					</c:when>
-					<c:when test="${Card != null}">
+					<c:when test="${card != null}">
 						<h1 class="text-center">Edição de Cartão</h1>
 					</c:when>
 				</c:choose>
 				<c:choose>
-					<c:when test="${Card == null}">
+					<c:when test="${card == null}">
 						<input type="hidden" name="id" value="0">
 					</c:when>
-					<c:when test="${Card != null}">
-						<input type="hidden" name="id" value="${Card.id}">
+					<c:when test="${card != null}">
+						<input type="hidden" name="id" value="${card.id}">
 					</c:when>
 				</c:choose>
 					
@@ -80,35 +80,30 @@
 					<div class="mb-2">
 						<label for="type">Tipo*</label> 
 						<select class="form-select"
-							name="Tipo" id="Tipo" required="required">
+							name="type" id="type" required="required">
+														
 							<c:choose>
-								<c:when test="${Card == null}">
-									<option value="" selected>Selecione</option>
-								</c:when>
-							</c:choose>
-							
-							<c:choose>
-								<c:when test="${Card.type != 'Escolar'}">
+								<c:when test="${card.type != 'Escolar'}">
 									<option value="Escolar">Escolar</option>
 								</c:when>
-								<c:when test="${Card.type == 'Escolar'}">
-									<option value="Escolar" selected>Escolar</option>
+								<c:when test="${card.type == 'Escolar'}">
+									<option value="Escolar" >Escolar</option>
 								</c:when>
 							</c:choose>
 							<c:choose>
-								<c:when test="${Card.type != 'Padrao'}">
-									<option value="Padrão">Padrão</option>
+								<c:when test="${card.type != 'Padrao'}">
+									<option value=Padrao>Padrao</option>
 								</c:when>
-								<c:when test="${Card.type == 'Padrao'}">
-									<option value="Padrão" selected>Padrão</option>
+								<c:when test="${card.type == 'Padrao'}">
+									<option value="Padrao" selected="selected" >Padrao</option>
 								</c:when>
 							</c:choose>
 							<c:choose>
-								<c:when test="${Card.type != 'Empresarial'}">
+								<c:when test="${card.type != 'Empresarial'}">
 									<option value="Empresarial">Empresarial</option>
 								</c:when>
-								<c:when test="${Card.type == 'Empresarial'}">
-									<option value="Empresarial" selected>Empresarial</option>
+								<c:when test="${card.type == 'Empresarial'}">
+									<option value="Empresarial">Empresarial</option>
 								</c:when>
 							</c:choose>
 						</select>

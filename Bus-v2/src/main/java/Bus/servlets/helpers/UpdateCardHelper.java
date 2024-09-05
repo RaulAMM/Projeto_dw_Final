@@ -10,7 +10,7 @@ import Bus.utils.SearcherDataSource;
 public class UpdateCardHelper implements Helper{
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-		Long cardId = Long.parseLong(req.getParameter("card-id"));
+		String cardId = req.getParameter("card-id");
 			
 		CardDao cardDao = new CardDao(SearcherDataSource.getInstance().getDataSource());
 		Card card = cardDao.getCardById(cardId); 

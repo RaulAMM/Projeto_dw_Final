@@ -8,11 +8,11 @@ public class Card implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private CardType type;
-	private Long id;
-	private boolean status;
+	private String id;
+	private boolean status = false;
 	private Double saldo;
 	private String NomeTitular;
-	private User userCPF;
+	private String userCPF;
 			
 	public CardType getType() {
 		return type;
@@ -20,10 +20,10 @@ public class Card implements Serializable{
 	public void setType(CardType type) {
 		this.type = type;
 	}
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public boolean isStatus() {
@@ -44,10 +44,10 @@ public class Card implements Serializable{
 	public void setNomeTitular(String nomeTitular) {
 		NomeTitular = nomeTitular;
 	}
-	public User getUserCPF() {
+	public String getUserCPF() {
 		return userCPF;
 	}
-	public void setUserCPF(User userCPF) {
+	public void setUserCPF(String userCPF) {
 		this.userCPF = userCPF;
 	}
 	@Override
