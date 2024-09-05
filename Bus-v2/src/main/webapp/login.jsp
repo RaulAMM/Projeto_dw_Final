@@ -86,7 +86,7 @@
         </div>
         <h2>Sobre a StackOverBus</h2>
         <p>
-            A StackOverBus surgiu do sonho de quatro rapazes inovadores: Matheus, Rafael, Raul e Pietro. Com o objetivo de passar no DSI1 () e melhorar suas existências, eles fundaram a StackOverBus para criar uma plataforma que tem como unica e principal função, te ajudar com os terriveis cartões de onibus.
+            A StackOverBus surgiu do sonho de quatro rapazes inovadores: Matheus, Rafael, Raul e Pietro. Com o objetivo de passar no DWS5 () e melhorar suas existências, eles fundaram a StackOverBus para criar uma plataforma que tem como unica e principal função, te ajudar com os terriveis cartões de onibus.
         </p>
         <p>
             Com dedicação e criatividade, a StackOverBus se empenha em fornecer recursos e ferramentas de última geração, apoiando o crescimento e desenvolvimento profissional de seus usuários.

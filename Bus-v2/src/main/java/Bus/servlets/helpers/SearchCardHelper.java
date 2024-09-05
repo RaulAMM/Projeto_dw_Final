@@ -38,6 +38,6 @@ public class SearchCardHelper implements Helper{
 			e.printStackTrace();
 		}
 		req.setAttribute("userCards", userCards);
-		return "/home.jsp";
+		return "/card.jsp";
 	}
 }

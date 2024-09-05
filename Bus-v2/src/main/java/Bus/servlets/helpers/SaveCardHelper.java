@@ -19,7 +19,7 @@ public class SaveCardHelper implements Helper{
 		Double saldo = 0.0;
 		
 		Long id = Long.parseLong(req.getParameter("IdCartao"));
-		CardType type = CardType.valueOf(req.getParameter("Tipo"));
+		CardType type = CardType.valueOf(req.getParameter("type"));
 		Boolean status = true;
 		saldo = Double.parseDouble(req.getParameter("Saldo"));
 		String nomeTitular = req.getParameter("NomeTitular");

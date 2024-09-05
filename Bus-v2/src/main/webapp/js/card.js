@@ -1,42 +1,41 @@
-"use strict"
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+	return new bootstrap.Tooltip(tooltipTriggerEl)
+});
 
-window.onload = initPage;
+var myModal = document.getElementById('myModal');
+var bsModal = new bootstrap.Modal(document.getElementById('myModal'));
+myModal.addEventListener('show.bs.modal', function(event) {
+	// Botão que acionou o modal
+	var button = event.relatedTarget;
+	// Extrair informações dos atributos data-bs-*
+	var id = button.getAttribute('data-bs-id');
 
-function initPage(){
-	let form = document.getElementById('form1');
-	form.noValidate = true;
-	form.addEventListener('submit', function(e){
-		let valid = processValidity(this);
-		if(!valid){
-			e.preventDefault();
+	// Atualizar o conteúdo do modal
+	var modalTitle = myModal.querySelector('.modal-title');
+	var modalButton = myModal.querySelector('.modal-footer #delete');
+
+	modalTitle.textContent = 'Exclusão da Cartão ' + id;
+	modalButton.addEventListener('click', function(){
+		deleteCard(button,id);
+		bsModal.hide();
+	})
+})
+
+function deleteCard(button, id){
+	var row = button.parentNode.parentNode.parentNode; // button->span->td->tr 
+	const url = "ControllerServlet?action=deleteCard&card-id="+id;
+
+	// Solicitação GET.
+	fetch(url)
+	// Tratamento do sucesso
+	.then(response =>{
+		return response.json(); // converter para JSON
+	})
+	.then(data =>{
+	   	if(data){
+			row.parentNode.removeChild(row); // remover linha da tabela
 		}
-	});
-	let  CardNumber= form.elements['IdCartao'];
-	CardNumber.addEventListener('keyup', function(e){
-		CardNumber.value = mcc(CardNumber.value);
-	});
-}
-
-function processValidity(form){
-	let valid;
-	validateCardNumber(form);
-	valid = applyValidity(form);
-	return valid;
-}
-
-function validateCardNumber(form){
-	let  CardNumber= form.elements['IdCartao'];
-	if(password.value != confirmPassword.value){
-		password.setCustomValidity
-		('Valores de senha e confirmação de senha diferentes.');
-	}else{
-		password.setCustomValidity('');
-	}
-}
-
-function mcc(v){
-  v = v.replace(/\D/g,""); // Permite apenas dígitos
-  v = v.replace(/(\d{4})/g, "$1."); // Coloca um ponto a cada 4 caracteres
-
-  return v;
+	})
+	.catch(error => console.log('Erro de solicitação', error)); // lidar com os erros por catch
 }

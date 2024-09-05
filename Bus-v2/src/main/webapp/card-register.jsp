@@ -28,7 +28,7 @@
 			<c:if test="${result == 'notRegistered'}">
 				<div class="alert alert-danger alert-dismissible fade show"
 					role="alert">
-					Cartão não salvo. Faça o login.
+					Cartão não salvo. Tente novamente.
 					<button type="button" class="btn-close" data-bs-dismiss="alert"
 						aria-label="Close"></button>
 				</div>
@@ -73,8 +73,7 @@
 					<div class="mb-2">
 					  <label for="Saldo">Saldo</label>
 					  <input type="number" class="form-control"  
-					  	name="Saldo" id="Saldo"
-					  	maxlength="12">
+					  	name="Saldo" id="Saldo">
 					  <span id="2"></span>
 					</div>
 					
@@ -98,10 +97,10 @@
 							</c:choose>
 							<c:choose>
 								<c:when test="${Card.type != 'Padrao'}">
-									<option value="Padrao">Padrão</option>
+									<option value="Padrão">Padrão</option>
 								</c:when>
 								<c:when test="${Card.type == 'Padrao'}">
-									<option value="Padrao" selected>Padrão</option>
+									<option value="Padrão" selected>Padrão</option>
 								</c:when>
 							</c:choose>
 							<c:choose>
@@ -123,6 +122,6 @@
 	</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-		<script src="js/card.js"></script>
+		<script src="js/card-register.js"></script>
 </body>
 </html>

@@ -42,7 +42,7 @@ public class CardDao {
 		}
 
 		public List<Card> getCardByUser(User user) {
-			String sql = "select * from Cartão where UsuarioCPF=?";
+			String sql = "select * from Cartão where Usuario_CPF=?";
 			List<Card> cards = new ArrayList<>();
 			try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
 				ps.setString(1, user.getCPF());
@@ -89,7 +89,7 @@ public class CardDao {
 		}
 
 		public Boolean update(Card card) {
-			String sql = "update Cartão set " + "IdCartao=?," + "Status=?," + "Saldo=?,"+ "Tipo=?" + "NomeTitular=?," + "UsuarioCPF=?,"
+			String sql = "update Cartão set " + "IdCartao=?," + "Status=?," + "Saldo=?,"+ "Tipo=?" + "NomeTitular=?," + "Usuario_CPF=?,"
 		+ " where IdCartao=?";
 			try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
 				ps.setLong(1, card.getId());
@@ -118,7 +118,7 @@ public class CardDao {
 
 		public List<Card> getCardByFilter(CardFilter filter) throws SQLException {
 			StringBuilder sql = 
-					new StringBuilder("select * from Cartão where UsuarioCPF=?");
+					new StringBuilder("select * from Cartão where Usuario_CPF=?");
 			List<Object> params = new ArrayList<>();
 			params.add(filter.getUser().getCPF());
 

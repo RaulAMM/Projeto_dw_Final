@@ -7,16 +7,16 @@ import Bus.model.daos.CardDao;
 import Bus.model.entities.Card;
 import Bus.utils.SearcherDataSource;
 
-public class UpdateCard implements Helper{
+public class UpdateCardHelper implements Helper{
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-		Long cardId = Long.parseLong(req.getParameter("activity-id"));
+		Long cardId = Long.parseLong(req.getParameter("card-id"));
 			
 		CardDao cardDao = new CardDao(SearcherDataSource.getInstance().getDataSource());
 		Card card = cardDao.getCardById(cardId); 
 		if(card != null) {
 			req.setAttribute("Cartão", card);	
 		}
-		return "/activity-register.jsp";
+		return "/card.jsp";
 	}
 }
