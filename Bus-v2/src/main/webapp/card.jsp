@@ -22,6 +22,13 @@
 			<div class="col-12">
 				<h1 class="text-center">Cartões Registrados</h1>
 			</div>
+			<div class="col-12 col-lg-3 offset-lg-9">
+				<span data-bs-toggle="tooltip" data-bs-placement="top" title="Adicionar">
+					<a type="button" class="btn" href="card-register.jsp">
+						<img src="img/add.png" alt="Adicionar">
+					</a>
+				</span>							
+			</div>
 			<form action="ControllerServlet" method="post">
 				<div class="row">
 					<div class="col-12 col-lg-3">
@@ -92,11 +99,6 @@
 	                						<img src="img/trash.svg" alt="Excluir">
 	                					</a>
                 					</span>				
-									<span data-bs-toggle="tooltip" data-bs-placement="top" title="Adicionar">
-										<a type="button" class="btn" href="card-register.jsp">
-											<img src="img/add.png" alt="Adicionar">
-										</a>
-									</span>							
 								</td>
 							</tr>
 						</c:forEach>
